@@ -1,0 +1,59 @@
+/* Navigation */
+nav .nav-wrapper{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Post */
+.post-info{
+  display: block;
+  width:100%;
+  text-align: right;
+  margin-top:50px;
+  font-size:10px;
+  font-weight: bold;
+  
+}
+
+.info .info-votes{
+  float:left
+}
+
+.info .info-votes i{
+  font-size: 15px;
+  padding:2px
+}
+
+.info {
+  clear:both
+}
+
+.posts-container{
+  padding: 15px
+}
+
+.post-actions button{
+  width:220px
+}
+
+/* Comments */
+.comment {
+  padding:10px;
+  margin:5px;
+  border:1px solid #ccc ;
+  border-radius: 10px
+}
+
+.comment .info {
+  width:100%;
+  text-align: right;
+  font-size:10px
+}
+
+
+
+.active .input-field label:not(.label-icon) {
+  font-size: .8rem;
+  -webkit-transform: translateY(-140%);
+  transform: translateY(-140%);
+}
