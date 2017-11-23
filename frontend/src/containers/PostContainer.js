@@ -1,19 +1,25 @@
 import { connect } from 'react-redux'
 import { getAllPosts, createPost } from '../actions';
-import Main from '../components/Main';
+import Post from '../components/Post';
 
 const mapStateToProps = ({ posts, loading }, ownProps) => ({
     posts,
-    loading
+    loading,
+    ...ownProps
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    getAllPosts: () => {
-        dispatch(getAllPosts())
+
+    updatePost: (post) => {
+        dispatch(createPost(post))
+    },
+    deletePost: (post) => {
+
     }
+
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main);
+)(Post);

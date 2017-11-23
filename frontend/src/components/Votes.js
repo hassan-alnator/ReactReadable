@@ -3,18 +3,35 @@ import { Button, Icon, Dropdown, NavItem } from 'react-materialize';
 
 export default class Votes extends Component {
 
+    state = {
+        votes: 0,
+        postId: 0
+    }
+
+    componentDidMount() {
+
+        const { voteScore, postId } = this.props;
+
+        this.setState({
+            voteScore,
+            postId
+        })
+    }
+
     voteUp = (e, postId) => {
         e.preventDefault()
         this.props.voteUp(postId)
+        this.setState((state) => ({ voteScore: state.voteScore + 1 }))
     }
 
     voteDown = (e, postId) => {
         e.preventDefault()
+        this.setState((state) => ({ voteScore: state.voteScore - 1 }))
         this.props.voteDown(postId)
     }
 
     render() {
-        const { voteScore, postId } = this.props;
+        const { voteScore, postId } = this.state;
 
         return (
             <Dropdown trigger={

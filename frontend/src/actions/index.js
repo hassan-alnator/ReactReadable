@@ -72,9 +72,9 @@ const UpdateCommentsList = comment => ({
 
 // API Action
 
-export const createComment = (comment, postId) => (dispatch) => {
+export const createComment = (comment, author, postId) => (dispatch) => {
     dispatch(startLoading());
-    Api.addComment(comment, postId).then((comment) => {
+    Api.addComment(comment, author, postId).then((comment) => {
         dispatch(CreateComment(comment, postId));
         dispatch(stopLoading());
     })

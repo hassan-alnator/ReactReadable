@@ -8,15 +8,17 @@ import Loading from './common/Loading'
 
 export default class Comments extends Component {
 
-    getComments = () => {
+
+
+    componentWillMount() {
         const { postId, getPostComments } = this.props;
         getPostComments(postId);
     }
 
-    createComment = (comment) => {
+    createComment = (comment, author) => {
 
         const { postId, createComment } = this.props;
-        createComment(comment, postId)
+        createComment(comment, author, postId)
 
     }
     render() {
@@ -26,8 +28,7 @@ export default class Comments extends Component {
             <div>
                 <Modal
                     header='Comments'
-                    modalOptions={{ ready: this.getComments }}
-                    trigger={<Button flat waves='light'> Comments<Icon left>comment</Icon></Button>}>
+                    trigger={<Button flat waves='light'>{comments && comments.length} Comments<Icon left>comment</Icon></Button>}>
                     <div>
                         {loading && <Loading />}
                         {comments && comments.map(comment => <Comment key={comment.id} {...comment} {...this.props} />)}

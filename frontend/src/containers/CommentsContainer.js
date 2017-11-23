@@ -12,8 +12,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     getPostComments: (postId) => {
         dispatch(getPostComments(postId))
     },
-    createComment: (comment, postId) => {
-        dispatch(createComment(comment, postId))
+    createComment: (comment, author, postId) => {
+        console.log(comment, author, postId)
+        dispatch(createComment(comment, author, postId))
     },
     updateComment: (commentId, updatedComment) => {
         dispatch(updateComment(commentId, updatedComment))

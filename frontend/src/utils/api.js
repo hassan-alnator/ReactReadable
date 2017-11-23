@@ -2,7 +2,7 @@ import timestamp from 'unix-timestamp'
 import uuidv4 from 'uuid/v4';
 
 // authorization key and header
-const authorization = "hassanalnator12";
+const authorization = "hassanalnator123";
 const apiEndPoit = "http://localhost:3001";
 const headers = { 'Authorization': authorization, "Content-Type": "application/json" };
 
@@ -67,11 +67,11 @@ export const getPostComments = (id) => fetch(
     { method: 'GET', headers }
 ).then((res) => res.json());
 
-export const addComment = (body, parentId) => {
+export const addComment = (body, author, parentId) => {
 
     const id = uuidv4();
     const now = timestamp.now();
-    const requestBody = JSON.stringify({ id, timestamp: now, body, author: authorization, parentId })
+    const requestBody = JSON.stringify({ id, timestamp: now, body, author: author, parentId })
 
     return fetch(`${apiEndPoit}/comments`, { method: 'POST', headers, body: requestBody })
         .then((res) => res.json());

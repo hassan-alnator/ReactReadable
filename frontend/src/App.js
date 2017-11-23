@@ -3,8 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 
 import PageNotFound from './components/common/404'
 import Navigation from './components/common/Navigation'
-import Toolbar from './components/common/Toolbar'
+import PostDetails from './components/PostDetails'
+
 import MainPageContainer from './containers/MainPageContainer'
+
+
 import './App.css';
 
 const App = () => (
@@ -13,9 +16,9 @@ const App = () => (
     <div className="container">
       <Switch>
         <Route exact path="/" component={MainPageContainer} />
+        <Route exact path="/:category/:post_id" component={PostDetails} />
         <Route component={PageNotFound} />
       </Switch>
-      <Toolbar />
     </div>
   </div>
 )

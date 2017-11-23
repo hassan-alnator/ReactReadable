@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Post from './Post'
+import Post from '../containers/PostContainer'
 import PostControlls from './PostControlls'
 import Loading from './common/Loading'
 
@@ -12,7 +12,7 @@ export default class Main extends Component {
         this.props.getAllPosts();
     }
 
-    onPostCreate = (post) => {
+    /*onPostCreate = (post) => {
         this.props.createPost(post);
     }
 
@@ -22,12 +22,12 @@ export default class Main extends Component {
 
     onPostDelete = (id) => {
 
-    }
+    }*/
 
     renderPosts = () => {
         return this.props.posts
             .filter(post => !post.deleted)
-            .map(post => <Post onPostUpdate={this.onPostUpdate} onPostDelete={this.onPostDelete} key={post.id} {...post} />)
+            .map(post => <Post Editable={false} key={post.id} {...post} />)
     }
 
 
