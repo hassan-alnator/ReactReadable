@@ -10,7 +10,9 @@ import {
     VOTE_DOWN_COMMENT,
     VOTE_UP_COMMENT,
     MAKE_COMMENT,
-    UPDATE_COMMENT
+    UPDATE_COMMENT,
+    EDIT_POST,
+    DELETE_POST
 } from '../constants'
 
 import * as Api from '../utils/api'
@@ -120,6 +122,8 @@ export const getAllPosts = () => (dispatch) => {
     })
 }
 
+
+
 export const createPost = (post) => (dispatch) => {
     dispatch(startLoading());
     Api.addPost(post).then(post => dispatch({
@@ -129,6 +133,31 @@ export const createPost = (post) => (dispatch) => {
     dispatch(stopLoading());
 
 }
+
+
+export const editPost = (post) => (dispatch) => {
+    dispatch(startLoading());
+    Api.editPost(post).then(post => {
+        dispatch({
+            type: EDIT_POST,
+            post
+        })
+        window.location.href = "/"
+    })
+
+}
+export const deletePost = (post) => (dispatch) => {
+    dispatch(startLoading());
+    Api.deletePost(post).then(post => {
+        dispatch({
+            type: DELETE_POST,
+            post
+        })
+        window.location.href = "/"
+    })
+
+}
+
 
 export const getAllCategories = () => dispatch => {
     dispatch(startLoading());

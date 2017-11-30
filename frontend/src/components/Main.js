@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Categorie from './Categorie';
 import Post from '../containers/PostContainer'
 import PostControlls from './PostControlls'
 import Loading from './common/Loading'
@@ -9,25 +10,24 @@ export default class Main extends Component {
 
 
     componentDidMount() {
-        this.props.getAllPosts();
+        const { getAllPosts, getAllCategories } = this.props;
+        getAllCategories();
+        getAllPosts();
     }
 
-    /*onPostCreate = (post) => {
-        this.props.createPost(post);
-    }
-
-    onPostUpdate = (post) => {
-
-    }
-
-    onPostDelete = (id) => {
-
-    }*/
 
     renderPosts = () => {
+        const category = this.props.match.params.category;
         return this.props.posts
-            .filter(post => !post.deleted)
+            .filter(post => category ? post.category === category && !post.deleted : !post.deleted)
             .map(post => <Post Editable={false} key={post.id} {...post} />)
+    }
+
+
+    renderCategories = () => {
+        return this.props.categories.map(
+            categorie => <Categorie {...categorie} />
+        )
     }
 
 
@@ -40,6 +40,8 @@ export default class Main extends Component {
                 />
                 <hr />
                 {this.props.loading && <Loading />}
+                {this.renderCategories()}
+                <hr />
                 {this.renderPosts()}
             </div>
         )

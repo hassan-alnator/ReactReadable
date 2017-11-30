@@ -34,7 +34,7 @@ export const voteOnPost = (id, option) => fetch(
     { method: 'POST', headers, body: JSON.stringify({ option }) }
 ).then((res) => res.json());
 
-export const deletePost = (id) => fetch(
+export const deletePost = ({ id }) => fetch(
     `${apiEndPoit}/posts/${id}`,
     { method: 'DELETE', headers }
 ).then((res) => res.json());
