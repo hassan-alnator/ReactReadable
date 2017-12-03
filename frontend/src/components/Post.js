@@ -35,7 +35,7 @@ const Post = ({ id, title, body, author, category, voteScore, timestamp, onPostU
                 <span className="post-info">{category} | Posted By {author} <Moment toNow unix>{timestamp}</Moment></span>
                 <Link to={{
                     pathname: `/posts/${category}/${id}`,
-                    state: { post: { id, title, body, author, category, voteScore, timestamp } }
+                    state: { post: { id, title, body, author, category, voteScore, timestamp }, categories: this.props.categories }
                 }}>More</Link>
             </div>
         </Card>

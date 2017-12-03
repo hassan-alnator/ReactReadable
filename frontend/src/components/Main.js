@@ -20,7 +20,7 @@ export default class Main extends Component {
         const category = this.props.match.params.category;
         return this.props.posts
             .filter(post => category ? post.category === category && !post.deleted : !post.deleted)
-            .map(post => <Post Editable={false} key={post.id} {...post} />)
+            .map(post => <Post Editable={false} key={post.id} {...post} categories={this.props.categories} />)
     }
 
 
