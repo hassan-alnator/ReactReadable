@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     getAllCategories: () => {
         dispatch(getAllCategories())
+    },
+    createPost: (post) => {
+        dispatch(createPost(post))
     }
 });
 

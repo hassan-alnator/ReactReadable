@@ -11,6 +11,7 @@ const mapStateToProps = ({ posts, loading }, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
     updatePost: (post) => {
+        console.log(post)
         dispatch(editPost(post))
     },
     deletePost: (post) => {

@@ -65,7 +65,7 @@ export default class Main extends Component {
                 Sort By : <span onClick={() => this.sortByDate()}>Date</span> | <span onClick={() => this.sortByScore()}> Score</span>
                 <hr />
                 <PostControlls
-                    onPostCreate={this.onPostCreate}
+                    onPostCreate={this.props.createPost}
                 />
                 <hr />
                 {this.props.loading && <Loading />}

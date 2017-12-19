@@ -15,7 +15,7 @@ const Post = ({ id, title, body, author, category, voteScore, timestamp, onPostU
                 <div className="card-content">
                     <p>{body}</p>
                     <span className="post-info">{category} | Posted By {author} <Moment toNow unix>{timestamp}</Moment></span>
-                    <PostUpdate onSubmit={(e) => updatePost({ id, title, body, author, category })} post={{ id, title, body, author, category }} />
+                    <PostUpdate onSubmit={(post) => updatePost(post)} post={{ id, title, body, author, category }} />
                     <br />
                     <Button floating className='red' waves='light' icon='delete' onClick={(e) => deletePost({ id, title, body, author, category })} />
 
@@ -33,12 +33,12 @@ const Post = ({ id, title, body, author, category, voteScore, timestamp, onPostU
             <div className="card-content">
                 <p>{body && body.substr(0, 250)}...</p>
                 <span className="post-info">{category} | Posted By {author} <Moment toNow unix>{timestamp}</Moment></span>
-                <PostUpdate onSubmit={(e) => updatePost({ id, title, body, author, category })} post={{ id, title, body, author, category }} />
+                <PostUpdate onSubmit={(post) => updatePost(post)} post={{ id, title, body, author, category }} />
                 <br />
                 <Button floating className='red' waves='light' icon='delete' onClick={(e) => deletePost({ id, title, body, author, category })} />
                 <br /><br />
                 <Link to={{
-                    pathname: `/posts/${category}/${id}`,
+                    pathname: `/${category}/${id}`,
                     state: { post: { id, title, body, author, category, voteScore, timestamp }, categories }
                 }}>More Details</Link>
             </div>

@@ -16,8 +16,8 @@ const App = () => (
     <div className="container">
       <Switch>
         <Route exact path="/" component={MainPageContainer} />
-        <Route exact path="/posts/:category/:post_id" component={PostDetails} />
-        <Route exact path="/posts/:category" component={MainPageContainer} />
+        <Route exact path="/:category/:post_id" component={PostDetails} />
+        <Route exact path="/:category" component={MainPageContainer} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

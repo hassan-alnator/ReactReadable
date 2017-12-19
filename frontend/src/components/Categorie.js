@@ -10,7 +10,7 @@ export default class Categorie extends Component {
     render() {
         return (
             <div>
-                <Link to={`/posts/${this.props.path}`}>{this.props.name}</Link>
+                <Link to={`/${this.props.path}`}>{this.props.name}</Link>
             </div>
         )
     }

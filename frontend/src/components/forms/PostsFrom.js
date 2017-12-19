@@ -8,7 +8,7 @@ export default class PostFrom extends Component {
 
     state = {
         author: '',
-        category: '',
+        category: 'react',
         title: '',
         body: ''
     }
