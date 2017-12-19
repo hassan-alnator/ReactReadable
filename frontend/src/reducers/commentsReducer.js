@@ -3,7 +3,8 @@ import {
     MAKE_COMMENT,
     UPDATE_COMMENT,
     VOTE_DOWN_COMMENT,
-    VOTE_UP_COMMENT
+    VOTE_UP_COMMENT,
+    DELETE_COMMENT
 } from '../constants';
 
 const commentsReducer = (state = {}, action) => {
@@ -12,6 +13,8 @@ const commentsReducer = (state = {}, action) => {
             return { ...state, [action.postId]: action.comments }
         case MAKE_COMMENT:
             return { ...state, [action.postId]: [...state[action.postId], action.comment] }
+        case DELETE_COMMENT:
+            return { ...state, [action.parentId]: [...state[action.parentId].filter(comment => comment.id !== action.id)] }
         case UPDATE_COMMENT:
             return {
                 ...state,

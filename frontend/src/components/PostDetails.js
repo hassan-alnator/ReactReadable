@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Post from '../containers/PostContainer'
-
+import { Redirect } from 'react-router-dom';
 export default class PostDetails extends Component {
 
     constructor(props) {
@@ -8,13 +8,17 @@ export default class PostDetails extends Component {
     }
 
     render() {
-        const { post } = this.props.location.state;
-        console.log(post)
-        return (
-            <div>
-                <Post Editable={true} key={post.id} {...post} />
-            </div>
-        )
+
+        if (this.props.location.state) {
+            const { post } = this.props.location.state;
+            return (
+                <div>
+                    <Post Editable={true} key={post.id} {...post} />
+                </div>
+            )
+        } else {
+            return <Redirect to="/404" />
+        }
     }
 
 }

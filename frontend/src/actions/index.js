@@ -12,7 +12,8 @@ import {
     MAKE_COMMENT,
     UPDATE_COMMENT,
     EDIT_POST,
-    DELETE_POST
+    DELETE_POST,
+    DELETE_COMMENT
 } from '../constants'
 
 import * as Api from '../utils/api'
@@ -71,6 +72,14 @@ const UpdateCommentsList = comment => ({
     type: UPDATE_COMMENT,
     comment
 })
+
+const DeleteComment = (id, parentId) => ({
+    type: DELETE_COMMENT,
+    id,
+    parentId
+})
+
+
 
 // API Action
 
@@ -178,4 +187,9 @@ export const getPostComments = (postId) => dispatch => {
 export const updateComment = (id, comment) => dispatch => {
     Api.editComment(id, comment)
         .then(comment => dispatch(UpdateCommentsList(comment)))
+}
+
+export const deleteComment = (id, parentId) => dispatch => {
+    Api.deleteComment(id)
+        .then((comment) => dispatch(DeleteComment(id, parentId)))
 }

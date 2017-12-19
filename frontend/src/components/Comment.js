@@ -20,6 +20,10 @@ class Comment extends Component {
         this.props.voteDown(id, parentId);
     }
 
+    deleteComment = (id, parentId) => {
+        this.props.deleteComment(id, parentId);
+    }
+
 
     render() {
 
@@ -27,6 +31,8 @@ class Comment extends Component {
 
         return (
             <div className="col s12 comment card">
+                <span onClick={() => this.deleteComment(id, parentId)}><b style={{ color: "red" }}>x</b></span>
+                <hr />
                 <EditInPlace
                     value={body}
                     name="comment"
@@ -37,7 +43,7 @@ class Comment extends Component {
 
                 <hr />
                 <div className="info">
-                    <span className="info-text">{author} | <Moment toNow unix>{timestamp}</Moment> | click on text to edit</span>
+                    <span className="info-text">{author} | <Moment toNow unix>{timestamp}</Moment> | <b>click on text to edit</b> </span>
                     <span className="info-votes">
                         {voteScore}
                         <i className="material-icons" onClick={() => this.voteUp(id, parentId)}>thumb_up</i>

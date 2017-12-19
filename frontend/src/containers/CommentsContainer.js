@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getPostComments, createComment, updateComment, voteDownComment, voteUpComment } from '../actions';
+import { getPostComments, createComment, updateComment, voteDownComment, deleteComment, voteUpComment } from '../actions';
 import Comments from '../components/Comments';
 
 const mapStateToProps = ({ loading, comments }, { postId }) => ({
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     voteDown: (id, parentId) => {
         dispatch(voteDownComment(id, parentId))
+    },
+    deleteComment: (id, parentId) => {
+        dispatch(deleteComment(id, parentId))
     }
 });
 
